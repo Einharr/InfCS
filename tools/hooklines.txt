@@ -1,0 +1,36 @@
+ChatTabCleanup: dead-room tree purge armed (internalDestroyRoom 0x00A2AF90) - curated stale rooms (e.g. ThePit) made un-re-addable
+ChatTabCleanup: hooked Tab::hasChannel @ 0x0102D2D0 - blank City channel hidden from the Available Channels selector
+ChatTabCleanup: hooked chat loadSettings @ 0x00F3EBC0 - empty 'None' tabs auto-removed on login
+ChatTabCleanup: hooked chat saveSettings @ 0x00F3E9B0 - dead-channel tabs swept at logout
+CrashGuard: DPVS resolveVisibility timing hook at 61a291f0 (slow-frame attribution)
+CrashGuard: caught fault #1 code=0xC0000005 pc=0110d1ab - skipped frame (consecutive-samePC=1)
+CrashGuard: construction guard installed at 0x00b23ee0 (Object::getProperty; thread-agnostic TLS checkpoint at the fault site; (pc,this) backoff)
+CrashGuard: hooked AsyncLoader threadRoutine at 0x00A96780 (TID-capture diag)
+CrashGuard: hooked runGameLoopOnce at 0x004237C0 (generic per-frame crash-guard + frame-timing; chains top-level filter on 1st frame)
+CrateSplit: hooked requestSplit at 0x00E113A0 (max=100)
+CrateSplit: hooked splitter ctor at 0x00E10880 (clears NumericInteger filter)
+FPS: patched timer object at 0081a491 (60 fps, 0.016667 frametime)
+FPS: patched timer object at 00823001 (60 fps, 0.016667 frametime)
+FactoryCrate: patched 1000 -> 5000 at 00d17291 (PUSH)
+FactoryCrate: patched 1000 -> 5000 at 00d172cb (PUSH)
+FactoryCrate: patched 1000 -> 5000 at 00d172dc (PUSH)
+FactoryCrate: patched 1000 -> 5000 at 00d17694 (CMP)
+FrameTick: hooked parseMessages at 0x0051A900 (main-thread dispatch)
+GotTypeStrings: hooked getCanonicalName at 0x011b5830
+GotTypeStrings: hooked getStringId at 0x011b5870 (datapad title)
+InitRace: 0x011604f0 null-this guard installed (heap-fallback-cell variant; 2026-04 + 2026-07-02 mdmp classes covered)
+InputField: patched keystroke limit 8->9 at 01120df1
+InputField: patched paste limit 8->9 at 011292d0
+MacroSort: hooked save() at 0x006A1A00 (live re-sort enabled)
+MacroSort: in-memory s_macros sort enabled at 0x01919958
+MailClipboard: hooked updateBody at 0x00D69130
+NumberCommas: hooked UIText::SetLocalText at 0x0110F580
+NumberCommas: hooked UIUtils::ParseLong at 0x010ED500
+StairStepFix: patched step-up probe to be FPS-invariant (FCOMP->FTST at 0x012760c9)
+Toolbar3: hooked addAction at 0x008CC650 (startup registration)
+Toolbar3: hooked loadSettings at 0x00F690B0 (diag)
+Toolbar3: hooked performAction at 0x00F65260 (addAction at 0x008CC650)
+Toolbar3: hooked saveSettings at 0x00F68900 (anti-revert)
+Toolbar3: hooked setDefaultAction at 0x00F67990
+UiReset: hooked CuiMediator::saveSettings at 0x009C1CC0 (diag=0 fix=1)
+VendorWaypoint: hooked createWaypoint at 0x00FE68F0

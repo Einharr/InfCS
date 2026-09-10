@@ -1,0 +1,92 @@
+version 0006
+cmds input/ui_inputmap_cmds.iff
+shift KEY  0x38 0x01 0
+shift KEY  0x1D 0x02 0
+shift KEY  0xB8 0x01 0
+shift KEY  0x9D 0x02 0
+shift KEY  0x2A 0x04 0
+shift KEY  0x36 0x04 0
+shift MOSB 0x00 0x10 0
+shift MOSB 0x01 0x40 0
+shift MOSB 0x02 0x20 0
+layer 0x00 0
+  KEYS  14 CuiM_BackSpace
+  KEYS 210 CuiM_Insert
+  KEYS 211 CuiM_Delete
+  KEYS 203 CuiM_LeftArrow
+  KEYS 205 CuiM_RightArrow
+  KEYS 200 CuiM_UpArrow
+  KEYS 208 CuiM_DownArrow
+  KEYS 199 CuiM_Home
+  KEYS 207 CuiM_End
+  KEYS 201 CuiM_PageUp
+  KEYS 209 CuiM_PageDown
+  KEYS  15 CuiM_Tab
+  KEYS  28 CuiM_Enter
+  KEYS   1 CuiM_Escape
+  MOSB   0 CuiM_MouseLeft
+  MOSB   1 CuiM_MouseRight
+  MOSB   2 CuiM_MouseMiddle
+  MOSB   3 CuiM_Mouse4
+  MOSB   4 CuiM_Mouse5
+  MOSB   5 CuiM_Mouse6
+  JOYB   3 CuiM_Mouse4
+  JOYB   4 CuiM_Mouse5
+  JOYB   5 CuiM_Mouse6
+  JOYX   0 CuiM_JoyAxisX
+  JOYX   1 CuiM_JoyAxisY
+layer 0x02 0
+  KEYS  46 CuiM_Copy
+  KEYS  45 CuiM_Cut
+  KEYS  44 CuiM_Undo
+  KEYS  47 CuiM_Paste
+  KEYS 210 CuiM_Insert
+  KEYS 211 CuiM_Delete
+  KEYS 203 CuiM_LeftArrow
+  KEYS 205 CuiM_RightArrow
+  KEYS 200 CuiM_UpArrow
+  KEYS 208 CuiM_DownArrow
+  KEYS 199 CuiM_Home
+  KEYS 207 CuiM_End
+  KEYS 201 CuiM_PageUp
+  KEYS 209 CuiM_PageDown
+  KEYS  15 CuiM_Tab
+  KEYS  28 CuiM_Enter
+  KEYS   1 CuiM_Escape
+  MOSB   0 CuiM_MouseLeft
+  MOSB   1 CuiM_MouseRight
+  MOSB   2 CuiM_MouseMiddle
+  MOSB   3 CuiM_Mouse4
+  MOSB   4 CuiM_Mouse5
+  MOSB   5 CuiM_Mouse6
+layer 0x06 0
+  KEYS  41 CuiM_Console
+  KEYS 210 CuiM_Insert
+  KEYS 211 CuiM_Delete
+  KEYS 203 CuiM_LeftArrow
+  KEYS 205 CuiM_RightArrow
+  KEYS 200 CuiM_UpArrow
+  KEYS 208 CuiM_DownArrow
+  KEYS 199 CuiM_Home
+  KEYS 207 CuiM_End
+  KEYS 201 CuiM_PageUp
+  KEYS 209 CuiM_PageDown
+  KEYS  15 CuiM_Tab
+  KEYS  28 CuiM_Enter
+  KEYS   1 CuiM_Escape
+  MOSB   0 CuiM_MouseLeft
+  MOSB   1 CuiM_MouseRight
+  MOSB   2 CuiM_MouseMiddle
+  MOSB   3 CuiM_Mouse4
+  MOSB   4 CuiM_Mouse5
+  MOSB   5 CuiM_Mouse6
+layer 0x04 1
+  KEYS -
+layer 0x10 1
+  KEYS -
+layer 0x20 1
+  KEYS -
+layer 0x40 1
+  KEYS -
+layer 0x01 1
+  KEYS -

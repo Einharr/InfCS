@@ -1,0 +1,492 @@
+{
+ "md5": "d84ee5565c24420858972edda9dddbf4",
+ "funcs": {
+  "UIManager_gUIManager": {
+   "va": 8912736,
+   "cc": "cdecl",
+   "sig": "558bec6aff687b5a",
+   "why": "warpCursor calls it before ProcessMessage; reads [0x1996E98], creates on zero"
+  },
+  "UIManager_ProcessMessage": {
+   "va": 17725376,
+   "cc": "thiscall",
+   "sig": "558bec6aff680830",
+   "why": "10 calls from CuiIoWin::processEvent with a UIMessage on the stack"
+  },
+  "UIManager_GetObjectFromPath": {
+   "va": 17737696,
+   "cc": "thiscall",
+   "sig": "558bec8b490485c9",
+   "why": "ecx=[this+4] (root), two arguments (path, type)"
+  },
+  "UIManager_GetFocusedLeaf": {
+   "va": 17737744,
+   "cc": "thiscall",
+   "sig": "8b490485c9750333",
+   "why": "ecx=[this+4]; jmp [vtbl+0xBC] = slot 47 GetFocusedLeafWidget"
+  },
+  "UIManager_PushContextWidget": {
+   "va": 17735760,
+   "cc": "thiscall",
+   "sig": "558bec6aff683b32",
+   "why": "creates a 0x128 UIPage in [this+0xD8], 21 calls"
+  },
+  "UIManager_PopContextWidgets": {
+   "va": 17736224,
+   "cc": "thiscall",
+   "sig": "558bec6aff686832",
+   "why": "guard 0x1996E9C, [this+0xD8]"
+  },
+  "UIManager_AbortDrag": {
+   "va": 17737968,
+   "cc": "thiscall",
+   "sig": "558bec83ec28568b",
+   "why": "builds a UIMessage Type 27 (DragCancel) for [this+0x3C]/[this+0x40]"
+  },
+  "UIBaseObject_GetObjectFromPath": {
+   "va": 17780640,
+   "cc": "thiscall",
+   "sig": "558bec56578b7d08",
+   "why": "taken earlier from SwgCuiDebugInfoPage (getCodeDataObject)"
+  },
+  "UIWidget_SetLocation": {
+   "va": 17850720,
+   "cc": "thiscall",
+   "sig": "558bec83ec108a45",
+   "why": "SetRect calls it with (x, y, 0); writes [this+0x2C]/[this+0x30]"
+  },
+  "UIText_SetLocalText": {
+   "va": 17888640,
+   "cc": "thiscall",
+   "sig": "558bec6aff681053",
+   "why": "QoL NumberCommas hook"
+  },
+  "UIMessage_ctor": {
+   "va": 17976304,
+   "cc": "thiscall",
+   "sig": "8bc133c989088848",
+   "why": "zeroes 0x28 bytes; 21 calls, warpCursor among them"
+  },
+  "CuiIoWin_warpCursor": {
+   "va": 9687536,
+   "cc": "thiscall",
+   "sig": "558bec83ec288b45",
+   "why": "gotoXY([this+0x10]) + UIMessage(MouseMove=18) + ProcessMessage"
+  },
+  "InputScheme_resetFromType": {
+   "va": 7215936,
+   "cc": "cdecl",
+   "sig": "558bec6aff68e087",
+   "why": "(const std::string& type, bool confirmed); its own WARNING strings inside"
+  },
+  "CuiActionManager_performAction": {
+   "va": 9225312,
+   "cc": "cdecl",
+   "sig": "558beca198cc8901",
+   "why": "(const std::string& id, const Unicode::String& params): map[index]/map[-1] -> vtbl[1]"
+  },
+  "CuiActionManager_addAction": {
+   "va": 9225808,
+   "cc": "cdecl",
+   "sig": "558bec6aff6870ec",
+   "why": "QoL Toolbar3 hook (action registration)"
+  },
+  "CuiMediator_getCodeDataObject": {
+   "va": 10912272,
+   "cc": "cdecl",
+   "sig": "558bec6aff689f37",
+   "why": "taken earlier"
+  },
+  "runGameLoopOnce": {
+   "va": 4339648,
+   "cc": "cdecl",
+   "sig": "558bec6aff689046",
+   "why": "QoL CrashGuard hook (the frame)"
+  },
+  "Game_getGameInputMap": {
+   "va": 4348800,
+   "cc": "cdecl",
+   "sig": "a15c8890016a0068",
+   "why": "SwgCuiToolbar::updateKeyBindings (0xF696D0) calls it before \"No inputmap\""
+  },
+  "CuiInputNames_getInputValueString": {
+   "va": 10401648,
+   "cc": "cdecl",
+   "sig": "558bec8b450c8b00",
+   "why": "(InputMap*, std::string* cmd, Unicode::String* out) - the call at 0xF697FD with add esp,0xC"
+  },
+  "Stlp_allocate": {
+   "va": 19834736,
+   "cc": "cdecl",
+   "sig": "6aff6888755c0164",
+   "why": "node_alloc::allocate(bytes): updateKeyBindings pushes 0x10 for an empty Unicode::String"
+  },
+  "Stlp_deallocate": {
+   "va": 4344576,
+   "cc": "thiscall",
+   "sig": "558bec8b4d0885c9",
+   "why": "alloc_proxy::deallocate(p, nchars): the end of updateKeyBindings; over 0x80 bytes goes to 0xAC1640"
+  },
+  "UIText_SetPreLocalized": {
+   "va": 17901152,
+   "cc": "thiscall",
+   "sig": "558bec538b5d0856",
+   "why": "(bool): updateKeyBindings pushes 1 before SetLocalText"
+  },
+  "UIVolumePage_Pack": {
+   "va": 18073280,
+   "cc": "thiscall",
+   "sig": "64a1000000006aff",
+   "why": "UIVolumePage vtable slot 59; does not check DoNotPackChildren (only the +0x154 guard), forces CellSize onto the children"
+  },
+  "SwgCuiToolbar_getToolbarItem": {
+   "va": 16152720,
+   "cc": "thiscall",
+   "sig": "558bec56578b7d0c",
+   "why": "xref WARNING \"the pane request (%d) for the toolbar was > data vector size\"; ret 8 -> (int pane, int slot), returns a CuiDragInfo*"
+  },
+  "SwgCuiToolbar_setToolbarItem": {
+   "va": 16148416,
+   "cc": "thiscall",
+   "sig": "558bec83ec088b55",
+   "why": "the only caller of getToolbarItem with pane<0 and slot<0 checks and an inline operator= for CuiDragInfo; ret 0xC -> (int pane, int slot, const CuiDragInfo*)"
+  },
+  "Game_getPlayerCreature": {
+   "va": 4346368,
+   "cc": "cdecl",
+   "sig": "a15c889001566a00",
+   "why": "the first call in cycleTargetsForPlayer (0x8C7395) and in isTargetCycleOk (0x8C8AB8); reads global 0x190885C and runs it through a type check"
+  },
+  "ClientWorld_findObjectsInRange": {
+   "va": 5642624,
+   "cc": "cdecl",
+   "sig": "558bec83ec30d945",
+   "why": "(Vector const* pos, float range, ObjectVector* out): the call at 0x8C73F5 with add esp,0xC; reads [pos],[pos+4],[pos+8] and a float"
+  },
+  "CuiCombatManager_targetIsAttackable": {
+   "va": 9204464,
+   "cc": "cdecl",
+   "sig": "558bec8b4d0c8b01",
+   "why": "the predicate cycleTargetsOutward (0x8C8A10) passes into cycleTargetsForPlayer; asClientObject vtbl+0x40, asTangibleObject vtbl+0x6C, isTargetCycleOk 0x8C8AB0, isAttackable 0x640220; ret with no number"
+  },
+  "CuiCombatManager_isTargetCycleOk": {
+   "va": 9210544,
+   "cc": "cdecl",
+   "sig": "558bec83ec1c5657",
+   "why": "called from targetIsAttackable; takes getPlayerCreature itself and compares against [player+0x598]; contains a camera frustum test"
+  },
+  "TangibleObject_isAttackable": {
+   "va": 6554144,
+   "cc": "thiscall",
+   "sig": "a05888900184c075",
+   "why": "the second call in targetIsAttackable, ecx = tangible"
+  },
+  "CreatureObject_setLookAtTarget": {
+   "va": 4410032,
+   "cc": "thiscall",
+   "sig": "538bdc83ec0883e4",
+   "why": "the tail of cycleTargetsForPlayer: ecx=player, the argument is the NetworkId* from getNetworkId; a mouse click makes the same call (SwgCuiHud::targetAtCursor)"
+  },
+  "ClientObject_getLocalizedName": {
+   "va": 5598912,
+   "cc": "thiscall",
+   "sig": "568bf18a86840100",
+   "why": "131 calls; cmp byte [this+0x184] (dirty) -> call 0x556000 (update) -> lea eax,[this+0x178] (Unicode::String)"
+  },
+  "Object_getNetworkId": {
+   "va": 11680864,
+   "cc": "thiscall",
+   "sig": "8d4120c390909090",
+   "why": "lea eax,[ecx+0x20]; ret - the NetworkId field"
+  },
+  "Object_getTransform": {
+   "va": 11676800,
+   "cc": "thiscall",
+   "sig": "568bf18b4e3485c9",
+   "why": "the call at 0x8C73BE before the position is read; lazy recompute driven by [this+0x34] and the [this+0xC]&0x20 flag; a 3x4 matrix in row order"
+  },
+  "CachedNetworkId_getObject": {
+   "va": 11731296,
+   "cc": "thiscall",
+   "sig": "538bd9e858ffffff",
+   "why": "the call at 0x8C73FF in cycleTargetsForPlayer and 0x8C8849 in cycleTargetsGroup: ecx = &CachedNetworkId, returns an Object*"
+  },
+  "ConfigClientGame_getTargetingRange": {
+   "va": 5256432,
+   "cc": "cdecl",
+   "sig": "e87b2cf2ff84c074",
+   "why": "call 0x8C73D5 in cycleTargetsForPlayer; picks the ground or space radius itself from isSpace (0x426170)"
+  },
+  "Stlp_free_big": {
+   "va": 11277888,
+   "cc": "cdecl",
+   "sig": "558bec8b450885c0",
+   "why": "the vector release branch in cycleTargetsForPlayer for a capacity over 0x80 bytes (0x8C745D)"
+  },
+  "Stlp_free_small": {
+   "va": 19835168,
+   "cc": "cdecl",
+   "sig": "518b44240c534855",
+   "why": "(ptr, bytes): the second branch of the same release (0x8C747B)"
+  }
+ },
+ "globals": {
+  "UIManager_gSingleton": {
+   "va": 26832536,
+   "why": "UIManager*; CuiManager::remove deletes through vtbl[1]"
+  },
+  "UIManager_gIsPopping": {
+   "va": 26832540,
+   "why": "the guard in PopContextWidgets"
+  },
+  "CuiManager_ms_theIoWin": {
+   "va": 26370364,
+   "why": "a store after the CuiIoWin constructor (0x93ADB0, size 0x68)"
+  },
+  "UIMessage_key_BackSpace": {
+   "va": 26056928,
+   "why": "word"
+  },
+  "UIMessage_key_Insert": {
+   "va": 26056930,
+   "why": "word"
+  },
+  "UIMessage_key_Delete": {
+   "va": 26056932,
+   "why": "word"
+  },
+  "UIMessage_key_LeftArrow": {
+   "va": 26056934,
+   "why": "word"
+  },
+  "UIMessage_key_RightArrow": {
+   "va": 26056936,
+   "why": "word"
+  },
+  "UIMessage_key_UpArrow": {
+   "va": 26056938,
+   "why": "word"
+  },
+  "UIMessage_key_DownArrow": {
+   "va": 26056940,
+   "why": "word"
+  },
+  "UIMessage_key_Home": {
+   "va": 26056942,
+   "why": "word"
+  },
+  "UIMessage_key_End": {
+   "va": 26056944,
+   "why": "word"
+  },
+  "UIMessage_key_PageUp": {
+   "va": 26056946,
+   "why": "word"
+  },
+  "UIMessage_key_PageDown": {
+   "va": 26056948,
+   "why": "word"
+  },
+  "UIMessage_key_Tab": {
+   "va": 26056950,
+   "why": "word"
+  },
+  "UIMessage_key_Space": {
+   "va": 26056952,
+   "why": "word"
+  },
+  "UIMessage_key_Enter": {
+   "va": 26056954,
+   "why": "word"
+  },
+  "UIMessage_key_Escape": {
+   "va": 26056956,
+   "why": "word"
+  },
+  "PROP_CmdName": {
+   "va": 26432952,
+   "why": "\"CmdName\" -> CuiDragInfo::cmd"
+  },
+  "PROP_DragInfoName": {
+   "va": 26432948,
+   "why": "\"DragInfoName\" -> CuiDragInfo::name"
+  },
+  "PROP_CmdStr": {
+   "va": 26432944,
+   "why": "\"CmdStr\" -> CuiDragInfo::str, on a live item this holds \"/ache\""
+  },
+  "PROP_DragCommandValue": {
+   "va": 26432940,
+   "why": "\"DragCommandValue\" -> CuiDragInfo::commandValue"
+  }
+ },
+ "vtables": {
+  "UIWidget": 23044300,
+  "UIPage": 23043492,
+  "UIVolumePage": 23049116,
+  "UIButton": 23044812,
+  "UIImage": 23045340,
+  "UIText": 23044564,
+  "UIManager": 23043004,
+  "UIPopupMenu": 23046852,
+  "UIRadialMenu": 23046436,
+  "UITabbedPane": 23050916,
+  "UIList": 23048884,
+  "UICursor": 23047140,
+  "CuiIoWin": 22971928,
+  "CuiMediator": 22974180,
+  "CuiWorkspace": 22974612,
+  "SwgCuiToolbar": 23029656,
+  "SwgCuiInventory": 23004096,
+  "SwgCuiInventoryContainerIcons": 23032760
+ },
+ "slots": {
+  "IsA": 0,
+  "GetTypeName": 1,
+  "Clone": 2,
+  "Destroy": 3,
+  "Attach": 4,
+  "Detach": 5,
+  "GetPropertyNames": 6,
+  "GetLinkPropertyNames": 7,
+  "RemoveProperty_c": 8,
+  "RemoveProperty": 9,
+  "SetProperty_c": 10,
+  "SetProperty": 11,
+  "GetProperty_c": 12,
+  "GetProperty": 13,
+  "ResetLocalizedStrings": 14,
+  "CopyPropertiesFrom": 15,
+  "AddChild": 16,
+  "RemoveChild": 17,
+  "SelectChild": 18,
+  "GetChild": 19,
+  "GetChildren": 20,
+  "GetChildCount": 21,
+  "RemoveFromParent": 22,
+  "MinimizeResources": 23,
+  "CanChildMove": 24,
+  "MoveChild": 25,
+  "Link": 26,
+  "DuplicateObject": 27,
+  "dtor": 28,
+  "SetRect": 29,
+  "SetSize": 30,
+  "SetWidth": 31,
+  "SetHeight": 32,
+  "SetScrollLocation": 33,
+  "SetScrollExtent": 34,
+  "GetScrollExtent": 35,
+  "GetScrollSizes": 36,
+  "GetMouseCursor_c": 37,
+  "GetMouseCursor": 38,
+  "GetLocalTooltip": 39,
+  "GetWidgetFromPoint": 40,
+  "CanSelect": 41,
+  "SetSelected": 42,
+  "SetSelectable": 43,
+  "SetTabRoot": 44,
+  "SetVisible": 45,
+  "SetUnderMouse": 46,
+  "GetFocusedLeafWidget": 47,
+  "WantsMessage": 48,
+  "ProcessMessage": 49,
+  "ProcessChildNotificationMessage": 50,
+  "GetStyle": 51,
+  "Render": 52,
+  "IsDropOk": 53,
+  "GetCustomDragWidget": 54,
+  "OnSizeChanged": 55,
+  "OnLocationChanged": 56,
+  "Page_InsertChildBefore": 57,
+  "Page_InsertChildAfter": 58,
+  "Page_Pack": 59,
+  "Page_slot60": 60
+ },
+ "offsets": {
+  "CreatureObject_group": 1976,
+  "GroupObject_membersBegin": 696,
+  "GroupObject_membersEnd": 700,
+  "GroupMember_stride": 24,
+  "GroupMember_name": 8,
+  "TangibleObject_pvpFlags_slot": 40,
+  "TangibleObject_condition": 908,
+  "CreatureObject_lookAtTarget": 1432,
+  "Object_transform_posX": 12,
+  "UIBaseObject_refcount": 4,
+  "UIBaseObject_name": 8,
+  "UIBaseObject_parent": 20,
+  "UIWidget_location": 44,
+  "UIWidget_size": 52,
+  "UIWidget_scrollLocation": 60,
+  "UIWidget_scrollExtent": 68,
+  "UIWidget_flags": 124,
+  "UIPage_children": 260,
+  "UIPage_pageFlags": 288,
+  "UIManager_rootPage": 4,
+  "UIManager_contextPage": 216,
+  "UIManager_dragObject": 64,
+  "CuiIoWin_mouseCursor": 16,
+  "SwgCuiToolbar_volumePage": 148,
+  "SwgCuiToolbar_volumeKeyBindings": 228,
+  "UIMessage_Type": 0,
+  "UIMessage_Modifiers": 4,
+  "UIMessage_Keystroke": 14,
+  "UIMessage_Data": 16,
+  "UIMessage_MouseX": 20,
+  "UIMessage_MouseY": 24,
+  "UIMessage_DragSource": 28,
+  "UIMessage_DragObject": 32,
+  "UIMessage_DragTarget": 36,
+  "UIMessage_size": 40
+ },
+ "msgtypes": {
+  "KeyFirst": 0,
+  "KeyDown": 1,
+  "KeyUp": 2,
+  "KeyRepeat": 3,
+  "Character": 4,
+  "KeyLast": 5,
+  "MouseFirst": 6,
+  "LeftMouseDown": 7,
+  "MiddleMouseDown": 8,
+  "RightMouseDown": 9,
+  "MouseLastFocusChanger": 10,
+  "LeftMouseDoubleClick": 11,
+  "MiddleMouseDoubleClick": 12,
+  "RightMouseDoubleClick": 13,
+  "LeftMouseUp": 14,
+  "MiddleMouseUp": 15,
+  "RightMouseUp": 16,
+  "MouseLastButton": 17,
+  "MouseMove": 18,
+  "MouseEnter": 19,
+  "MouseExit": 20,
+  "MouseWheel": 21,
+  "ContextRequest": 22,
+  "MouseLast": 23,
+  "DragFirst": 24,
+  "DragStart": 25,
+  "DragEnd": 26,
+  "DragCancel": 27,
+  "DragOver": 28,
+  "DragLast": 29
+ },
+ "keys": {
+  "UIMessage_key_BackSpace": 4104,
+  "UIMessage_key_Insert": 4141,
+  "UIMessage_key_Delete": 4142,
+  "UIMessage_key_LeftArrow": 4133,
+  "UIMessage_key_RightArrow": 4135,
+  "UIMessage_key_UpArrow": 4134,
+  "UIMessage_key_DownArrow": 4136,
+  "UIMessage_key_Home": 4132,
+  "UIMessage_key_End": 4131,
+  "UIMessage_key_PageUp": 4129,
+  "UIMessage_key_PageDown": 4130,
+  "UIMessage_key_Tab": 4105,
+  "UIMessage_key_Space": 32,
+  "UIMessage_key_Enter": 13,
+  "UIMessage_key_Escape": 27
+ }
+}
