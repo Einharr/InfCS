@@ -10,6 +10,18 @@ with no renderer of our own.
 Assembled 10 Sep 2026. Everything is here: the sources, the finished build, the
 files that go into the client, the test rig, the generators, the documentation.
 
+## Screenshots
+
+| Game menu radial | Target ring |
+|---|---|
+| ![Game menu radial](docs/screenshots/01-game-menu-radial.webp) | ![Target ring](docs/screenshots/02-target-ring.webp) |
+| **Controller hints and ally cycling** | **Mission browser** |
+| ![Controller hints and ally cycling](docs/screenshots/03-hints-cycle-allies.png) | ![Mission browser](docs/screenshots/04-mission-browser.png) |
+| **Object cycling at a terminal** | **Inventory context radial** |
+| ![Object cycling at a terminal](docs/screenshots/05-object-cycle-terminal.webp) | ![Inventory context radial](docs/screenshots/06-inventory-context-radial.png) |
+| **On-screen keyboard** | |
+| ![On-screen keyboard](docs/screenshots/07-on-screen-keyboard.webp) | |
+
 ## Status: a working prototype, playable, but not shipped
 
 What exists:
