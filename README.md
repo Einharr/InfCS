@@ -80,7 +80,7 @@ If time is short: `01-module.md`, then the "Integration point" section, then
 |---|---|
 | [`src/consoleport/`](src/consoleport/) | **the module itself.** `abi/` (addresses, properties), `core/` (calls into the binary, the UI tree, gestures, the runtime, the hooks), `input/` (the pad, DualSense HID, XInput), `crossbar/` (flyout geometry), `cursor/` (nodes, navigation, hints, the window stack), `windows/` (the desktop, the inventory, popups, the menu radial, the keyboard, bindings, the character selection screen), `world/` (targets, rings, decor), `tests/`, `gen/`, `build.cmd` |
 | [`src/inject/`](src/inject/) | the test-rig wrapper: bringing the module into a live process, the frame tick, the input hook, native HID, the crash catcher |
-| [`build/`](build/) | the finished build: `cpinject.dll` (the rig), `consoleport.lib` (for linking into QoL), `cp_tests.exe`, the test run |
+| [`build/`](build/) | the finished build: `cpinject.dll` (the rig), `consoleport.lib` (used for linking into QoL), `cp_tests.exe`, the test run |
 | [`client-files/`](client-files/) | what goes into the client: the markup, the input maps, the textures, a commented `consoleport.ini` and `deploy.py` |
 | [`harness/`](harness/) | the test rig: `inject.py` (bringing the DLL in), `patch_joy.py` (the saturation guard), the DirectInput and HID probes, the XInput probe, the screenshot and click helpers |
 | [`tools/`](tools/) | the generators: `abitable.py` (the ABI from the exe), `gen_props.py`, `gen_profiles.py`, `layout.py` (the layout), `build.py` (input maps), `diamond.py` (markup), `glyphs.py`/`ringtex.py` (textures), `abigen.py` (the disassembler), the validators |
